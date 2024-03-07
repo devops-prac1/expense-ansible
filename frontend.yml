@@ -6,9 +6,10 @@
       ansible.builtin.dnf:
         name: nginx
         state: latest
-    - name: Copy Expence Nginx Configuration
+
+    - name: Copy Expense Nginx Configuration
       ansible.builtin.copy:
-       src: expence.conf
+       src: expense.conf
        dest: /etc/nginx/default.d/expense.conf
 
 
