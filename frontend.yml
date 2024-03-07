@@ -1,4 +1,4 @@
-- name: Frontend Setuo
+- name: Frontend Setup
   hosts: all
   become: yes
     - name: Install Nginx
