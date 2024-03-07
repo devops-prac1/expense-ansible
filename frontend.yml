@@ -13,16 +13,16 @@
        dest: /etc/nginx/default.d/expense.conf
 
 
-    -  name: clean the old content
-       ansible.builtin.file:
-         path: /usr/share/nginx/html
-         state: absent
+    - name: clean the old content
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: absent
 
 
     - name: create App Directory
       ansible.builtin.file:
         path: /usr/share/nginx/html
-        state: Directory
+        state: directory
 
 
     - name: Download and extract App content
@@ -32,10 +32,10 @@
         remote_src: yes
 
 
-        name: start nginx
-        ansible.builtin.systemd_service:
-          state: restarted
-          name: nginx
+    - name: start nginx
+      ansible.builtin.systemd_service:
+        state: restarted
+        name: nginx
 
 
 
