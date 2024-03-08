@@ -2,7 +2,7 @@
   hosts: all
   become: yes
   tasks:
-    - name: Disable default nodejs Version Module
+    - name: Disable default Nodejs Version Module
       community.general.dnf_config_manager:
         name: nodejs
         state: disabled
