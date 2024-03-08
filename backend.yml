@@ -1,12 +1,11 @@
-- name: Backend Setup
+- name: backend setup
   hosts: all
   become: yes
   tasks:
-    - name: Disable default Nodejs Version Module
+    - name: Disable default nodejs version module
       community.general.dnf_config_manager:
         name: nodejs
         state: disabled
-
 
 
 
