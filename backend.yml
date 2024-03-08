@@ -49,7 +49,7 @@
         name: mysql
         state: installed
 
-    - name: load schema
+    - name: load Schema
       community.mysql.mysql_db:
         state: import
         name: all
