@@ -59,7 +59,7 @@
         login_host: mysql-dev.priya9sdr.online
 
     - name: start backend service
-      ansible.builtin.systemd_services:
+      ansible.builtin.systemd_service:
         name: backend
         state: restarted
         enabled: yes
