@@ -4,7 +4,7 @@
   tasks:
     - name: Disable default nodejs version module
       community.general.dnf_config_manager:
-        name: Node.js
+        name: node.js
         state: disabled
 
 
