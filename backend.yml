@@ -4,7 +4,7 @@
   tasks:
 
     - name: Disable default NodeJS version module
-      ansible.built.in.Shell: dnf module disable nodejs -y
+      ansible.built.in.shell: dnf module disable nodejs -y
 
     - name: enable NodeJS module for V20
       ansible.built.in.Shell: dnf module enable nodejs -y
