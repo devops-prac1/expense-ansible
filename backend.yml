@@ -1,13 +1,13 @@
-- name: backend setup
+- name: Backend Setup
   hosts: all
   become: yes
   tasks:
 
     - name: Disable default NodeJS version module
-      ansible.built.in.shell: dnf module disable nodejs -y
+      ansible.builtin.shell: dnf module disable nodejs -y
 
     - name: enable NodeJS module for V20
-      ansible.built.in.Shell: dnf module enable nodejs -y
+      ansible.builtin.shell: dnf module enable nodejs -y
     - name: Install NodeJS
       ansible.builtin.dnf:
         name: nodejs
