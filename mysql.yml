@@ -1,4 +1,4 @@
-- name: backend setup
+- name: MYSQL setup
   hosts: all
   become: yes
   tasks:
@@ -9,7 +9,7 @@
 
     - name: Start MYSQL Service
       ansible.builtin.systemd_service:
-        name: mysql
+        name: mysqld
         state: started
         enabled: yes
     - name: Setup MYSQL Password
