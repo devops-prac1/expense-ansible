@@ -2,7 +2,67 @@
   hosts: all
   become: yes
   tasks:
+
     - name: Disable default NodeJS version module
-      community.general.dnf_config_manager:
+      ansible.built.in.Shell: dnf module disable nodejs -y
+
+    - name: enable NodeJS module for V20
+      ansible.built.in.Shell: dnf module enable nodejs -y
+    - name: Install NodeJS
+      ansible.builtin.dnf:
         name: nodejs
-        state: disabled
+        state: installed
+
+    - name: adding Application user
+      ansible.builtin.user:
+        name: expense
+
+    - name: clean the old content
+      ansible.builtin.file:
+        path: /app
+        state: absent
+
+
+    - name: create App directory
+      ansible.builtin.file:
+        path: /app
+        state: directory
+
+    - name: Download and extract App content
+      ansible.builtin.unarchive:
+        src: https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
+        dest: /app
+        remote_src: yes
+
+    - name: Download NodeJS Dependencies
+      community.general.npm:
+        path: /app
+        state: latest
+
+    - name: copy backend service file
+      ansible.builtin.copy:
+        src: backend.service
+        dest: /etc/systemd/system/backend.service
+
+    - name: Install MYSQL client
+      ansible.builtin.dnf:
+        name: mysql
+        state: installed
+
+    - name: load schema
+      community.mysql.mysql_db:
+        state: import
+        name: all
+        target: /app/schema/backend.sql
+        login_user: root
+        login_password: ExpenseApp@1
+        login_host: mysql-dev.priya9sdr.online
+
+    - name: start backend service
+      ansible.builtin.systemd_services:
+        name: backend
+        state: restarted
+        enabled: yes
+        daemon_reload: yes
+
+

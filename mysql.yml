@@ -1,0 +1,17 @@
+- name: backend setup
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install MYSQL Server
+      ansible.builtin.dnf:
+        name: mysql-server
+        state: installed
+
+    - name: Start MYSQL Service
+      ansible.builtin.systemd_service:
+        name: mysql
+        state: started
+        enabled: yes
+    - name: Setup MYSQL Password
+      ansible.builtin.shell: mysql_secure_installation -- ser-root-pass ExpenseApp@1
+
