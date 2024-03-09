@@ -53,7 +53,7 @@
 
 
     - name: install mysql
-      anisble.builtin.shell: dnf install mysql -y
+      ansible.builtin.shell: dnf install mysql -y
 
     - name: load schema
       ansible.builtin.shell: mysql -h 172.31.1.152 -uroot -pExpenseApp@1 < /app/schema/backend.sql
