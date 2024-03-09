@@ -52,14 +52,11 @@
         executable: pip3.9
 
 
-    - name: Load Schema
-      community.mysql.mysql_db:
-        state: import
-        name: all
-        target: /app/schema/backend.sql
-        login_user: root
-        login_password: ExpenseApp@1
-        login_host: mysql-dev.priya9sdr.online
+    - name: install mysql
+      anisble.builtin.shell: dnf install mysql -y
+    - name: load schema
+      ansible.builtin.shell: mysql -h 172.31.1.152 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+
 
     - name: start backend service
       ansible.builtin.systemd_service:
