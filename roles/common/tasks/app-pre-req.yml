@@ -1,16 +1,16 @@
 
-- name: clean the old content
-  ansible.builtin.file:
-    path: "{{ app_loc }}"
-    state: absent
+  - name: clean the old content
+    ansible.builtin.file:
+      path: "{{ app_loc }}"
+      state: absent
 
-- name: create App directory
-  ansible.builtin.file:
-    path: "{{ app_loc }}"
-    state: directory
+  - name: create App directory
+    ansible.builtin.file:
+      path: "{{ app_loc }}"
+      state: directory
 
-- name: Download and extract App content
-  ansible.builtin.unarchive:
-    src: https://expense-artifacts.s3.amazonaws.com/expense-{{ component }}-v2.zip
-    dest: "{{ app_loc }}"
-    remote_src: yes
+  - name: Download and extract App content
+    ansible.builtin.unarchive:
+      src: https://expense-artifacts.s3.amazonaws.com/expense-{{ component }}-v2.zip
+      dest: "{{ app_loc }}"
+      remote_src: yes
