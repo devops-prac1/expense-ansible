@@ -3,7 +3,7 @@
 
   [Service]
   User=expense
-  Environment=DB_HOST="mysql-dev.priya9sdr.online"
+  Environment=DB_HOST="mysql-{{ env }}.priya9sdr.online"
   ExecStart=/bin/node /app/index.js
   SyslogIdentifier=backend
 
