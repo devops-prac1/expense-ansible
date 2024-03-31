@@ -40,7 +40,6 @@
     name: mysql
     state: installed
 
-
 - name: Load Schema
   community.mysql.mysql_db:
     state: import
