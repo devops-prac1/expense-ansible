@@ -35,6 +35,12 @@
       - cryptography
     executable: pip3.9
 
+- name: install Mysql client
+  ansible.builtin.dnf:
+    name: mysql
+    state: installed
+
+
 - name: Load Schema
   community.mysql.mysql_db:
     state: import
