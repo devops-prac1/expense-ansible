@@ -7,8 +7,8 @@
     ansible.builtin.file:
       path: "{{ app_loc }}"
       state: directory
-      owner: expense
-      group: expense
+      owner: "{{add_user}}"
+      group: "{{add_user}}"
 
 
   - name: Download and extract App content
@@ -16,5 +16,5 @@
       src: https://expense-artifacts.s3.amazonaws.com/expense-{{ component }}-v2.zip
       dest: "{{ app_loc }}"
       remote_src: yes
-      owner: expense
-      group: expense
+      owner: "{{add_user}}"
+      group: "{{add_user}}"
