@@ -3,6 +3,10 @@
     name: nginx
     state: latest
 
+- name: Adding Application User
+  ansible.builtin.user:
+    name: expense
+
 - name: Copy Expense Nginx Configuration
   ansible.builtin.template:
     src: expense.conf
