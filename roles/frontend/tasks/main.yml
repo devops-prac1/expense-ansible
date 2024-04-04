@@ -20,10 +20,10 @@
     name: nginx
     enabled: yes
 
-- name: Import NewRelic nginx setup
+- name: Import app pre requisites
   ansible.builtin.import_role:
-    name: newrelic
-    tasks_from: nginx
+    name: common
+    tasks_from: app-pre-req
 
 
 
