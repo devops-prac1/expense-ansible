@@ -24,6 +24,11 @@
     name: nginx
     enabled: yes
 
+- name: import newrelic nginx setup
+  ansible.builtin.import_role:
+    name: newrelic
+    tasks_from: nginx
+
   # restarted
   #comment
 
